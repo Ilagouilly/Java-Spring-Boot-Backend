@@ -26,7 +26,7 @@ public class UserController {
     ResponseEntity<Object> createUser(@RequestBody User user) {
 
         try {
-            User response = userService.create(user);
+            User response = userService.createOrUpdate(user);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {
@@ -45,6 +45,25 @@ public class UserController {
         try {
             userService.deleteById(userId);
             return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            for (StackTraceElement ste : e.getStackTrace()) {
+                LOGGER.error(ste.toString());
+            }
+            LOGGER.error(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/update/{userId}")
+    public @ResponseBody
+    ResponseEntity<Object> updateUser(@PathVariable(name = "userId", required = true) Long userId,  @RequestBody User user) {
+
+        try {
+            User refuser = userService.findByUserid(userId);
+            user.setUserid(refuser.getUserid());
+            User response = userService.createOrUpdate(user);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {
                 LOGGER.error(ste.toString());

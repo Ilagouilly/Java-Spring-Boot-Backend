@@ -18,7 +18,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User create(User user) throws Exception
+    public User createOrUpdate(User user) throws Exception
     {
         try
         {

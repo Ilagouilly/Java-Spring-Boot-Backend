@@ -1,4 +1,5 @@
 package com.ismaillagouilly.backend.model;
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -16,7 +17,9 @@ public class User {
 
     private String lastname;
 
-    private Date birthdate;
+    private Date birthday;
+
+    private Blob photo;
 
     private String email;
 
@@ -28,7 +31,7 @@ public class User {
 
     private String chat;
 
-    private String altitude;
+    private String longitude;
 
     private String latitude;
 
@@ -56,12 +59,12 @@ public class User {
         this.lastname = lastname;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public String getEmail() {
@@ -104,12 +107,12 @@ public class User {
         this.chat = chat;
     }
 
-    public String getAltitude() {
-        return altitude;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setAltitude(String altitude) {
-        this.altitude = altitude;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getLatitude() {
@@ -118,5 +121,13 @@ public class User {
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
+    }
+
+    public Blob getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
     }
 }
