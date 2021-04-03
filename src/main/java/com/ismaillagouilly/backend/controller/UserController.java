@@ -38,12 +38,29 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "*")
+    @PostMapping("/delete/{userId}")
+    public @ResponseBody
+    ResponseEntity<Object> deleteUser(@PathVariable(name = "userId", required = true) Long userId) {
+
+        try {
+            userService.deleteById(userId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            for (StackTraceElement ste : e.getStackTrace()) {
+                LOGGER.error(ste.toString());
+            }
+            LOGGER.error(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/{userId}")
     public @ResponseBody
     ResponseEntity<Object> getById(@PathVariable(name = "userId", required = true) Long userId) {
 
         try {
-            User response = userService.findById(userId);
+            User response = userService.findByUserid(userId);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {
@@ -55,7 +72,7 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/extended/{userLastname}")
+    @GetMapping("/getByLastname/{userLastname}")
     public @ResponseBody
     ResponseEntity<Object> getByName(@PathVariable(name = "userLastname", required = true) String userLastname) {
 
@@ -72,7 +89,7 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping
+    @GetMapping("/all")
     public @ResponseBody
     ResponseEntity<Object> getAll() {
 

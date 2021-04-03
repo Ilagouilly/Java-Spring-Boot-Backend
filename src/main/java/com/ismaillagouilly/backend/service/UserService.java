@@ -22,7 +22,6 @@ public class UserService {
     {
         try
         {
-            user.setFirstname("ok");
             User userSaved = userRepository.save(user);
 
             return userSaved;
@@ -33,7 +32,19 @@ public class UserService {
 
     }
 
-    public User findById(Long userId) throws Exception
+    public void deleteById(Long userid) throws Exception
+    {
+        try
+        {
+            userRepository.deleteById(userid);
+        } catch(Exception e ) {
+            logger.error("Exception occured Cause {} Message {} exception {}",e.getCause(), e.getMessage(), e);
+            throw new Exception("The resource you were trying to reach is not found");
+        }
+
+    }
+
+    public User findByUserid(Long userId) throws Exception
     {
         try
         {
