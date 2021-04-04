@@ -9,6 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Created by Ismail Lagouilly.
+ */
+
 @RestController
 @RequestMapping("api/event")
 public class EventController {

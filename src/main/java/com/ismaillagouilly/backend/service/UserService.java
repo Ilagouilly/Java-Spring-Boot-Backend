@@ -11,6 +11,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Created by Ismail Lagouilly.
+ */
+
 @Service
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);

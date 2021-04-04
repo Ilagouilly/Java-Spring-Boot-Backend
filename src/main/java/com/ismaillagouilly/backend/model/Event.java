@@ -6,6 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * Created by Ismail Lagouilly.
+ */
+
 @Entity
 public class Event {
     @Id

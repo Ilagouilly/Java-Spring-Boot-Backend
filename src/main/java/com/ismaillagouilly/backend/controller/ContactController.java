@@ -9,6 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Created by Ismail Lagouilly.
+ */
+
 @RestController
 @RequestMapping("api/contact")
 public class ContactController {
@@ -18,11 +22,18 @@ public class ContactController {
     private ContactService contactService;
 
     @CrossOrigin(origins = "*")
-    @PostMapping
+    @GetMapping
     public @ResponseBody
-    ResponseEntity<Object> createContact(@RequestBody Contact contact) {
+    ResponseEntity<Object> createContact(@RequestParam(name = "usersenderid", required = true) Long usersenderid,
+                                         @RequestParam(name = "userreceiverid", required = true) Long userreceiverid,
+                                         @RequestParam(name = "status", required = true) String status) {
 
         try {
+            Contact contact = new Contact();
+            contact.setUsersenderid(usersenderid);
+            contact.setUserreceiverid(userreceiverid);
+            contact.setStatus(status);
+
             Contact response = contactService.createOrUpdate(contact);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
