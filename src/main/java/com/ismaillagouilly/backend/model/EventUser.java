@@ -11,7 +11,7 @@ public class EventUser {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long eventuserid;
 
-    private Long eventit;
+    private Long eventid;
 
     private Long userid;
 
@@ -23,12 +23,12 @@ public class EventUser {
         this.eventuserid = eventuserid;
     }
 
-    public Long getEventit() {
-        return eventit;
+    public Long getEventid() {
+        return eventid;
     }
 
-    public void setEventit(Long eventit) {
-        this.eventit = eventit;
+    public void setEventid(Long eventid) {
+        this.eventid = eventid;
     }
 
     public Long getUserid() {
