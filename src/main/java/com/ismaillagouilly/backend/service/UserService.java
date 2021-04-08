@@ -1,6 +1,6 @@
 package com.ismaillagouilly.backend.service;
 
-import com.ismaillagouilly.backend.model.User;
+import com.ismaillagouilly.backend.model.AppUser;
 import com.ismaillagouilly.backend.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +22,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User createOrUpdate(User user) throws Exception
+    public AppUser createOrUpdate(AppUser user) throws Exception
     {
         try
         {
-            User userSaved = userRepository.save(user);
+            AppUser userSaved = userRepository.save(user);
 
             return userSaved;
         } catch(Exception e ) {
@@ -48,12 +48,12 @@ public class UserService {
 
     }
 
-    public User findByUserid(Long userId) throws Exception
+    public AppUser findByUserid(Long userId) throws Exception
     {
         try
         {
 
-            Optional<User> userOptional = userRepository.findById(userId);
+            Optional<AppUser> userOptional = userRepository.findById(userId);
             if(userOptional.isPresent())
                 return userOptional.get();
             else
@@ -65,12 +65,12 @@ public class UserService {
 
     }
 
-    public List<User> findByName(String userLastname) throws Exception
+    public List<AppUser> findByName(String userLastname) throws Exception
     {
         try
         {
 
-            List<User> userList = userRepository.findByLastname(userLastname);
+            List<AppUser> userList = userRepository.findByLastname(userLastname);
             if(!Objects.isNull(userList))
                 return userList;
             else
@@ -82,12 +82,12 @@ public class UserService {
 
     }
 
-    public List<User> findAll() throws Exception
+    public List<AppUser> findAll() throws Exception
     {
         try
         {
 
-            List<User> userList = (List<User>) userRepository.findAll();
+            List<AppUser> userList = (List<AppUser>) userRepository.findAll();
             if(!Objects.isNull(userList))
                 return userList;
             else

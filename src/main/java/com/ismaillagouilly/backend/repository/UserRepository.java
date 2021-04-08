@@ -1,6 +1,6 @@
 package com.ismaillagouilly.backend.repository;
 
-import com.ismaillagouilly.backend.model.User;
+import com.ismaillagouilly.backend.model.AppUser;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -9,8 +9,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<AppUser, Long> {
 
-    List<User> findByLastname(String userLastname);
-    User findByUserid(long id);
+    List<AppUser> findByLastname(String userLastname);
+    AppUser findByUserid(long id);
 }

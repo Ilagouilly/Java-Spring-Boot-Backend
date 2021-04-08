@@ -1,6 +1,6 @@
 package com.ismaillagouilly.backend.controller;
 
-import com.ismaillagouilly.backend.model.User;
+import com.ismaillagouilly.backend.model.AppUser;
 import com.ismaillagouilly.backend.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +27,10 @@ public class UserController {
     @CrossOrigin(origins = "*")
     @PostMapping
     public @ResponseBody
-    ResponseEntity<Object> createUser(@RequestBody User user) {
+    ResponseEntity<Object> createUser(@RequestBody AppUser user) {
 
         try {
-            User response = userService.createOrUpdate(user);
+            AppUser response = userService.createOrUpdate(user);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {
@@ -61,12 +61,12 @@ public class UserController {
     @CrossOrigin(origins = "*")
     @PostMapping("/update/{userId}")
     public @ResponseBody
-    ResponseEntity<Object> updateUser(@PathVariable(name = "userId", required = true) Long userId,  @RequestBody User user) {
+    ResponseEntity<Object> updateUser(@PathVariable(name = "userId", required = true) Long userId,  @RequestBody AppUser user) {
 
         try {
-            User refuser = userService.findByUserid(userId);
+            AppUser refuser = userService.findByUserid(userId);
             user.setUserid(refuser.getUserid());
-            User response = userService.createOrUpdate(user);
+            AppUser response = userService.createOrUpdate(user);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {
@@ -83,7 +83,7 @@ public class UserController {
     ResponseEntity<Object> getById(@PathVariable(name = "userId", required = true) Long userId) {
 
         try {
-            User response = userService.findByUserid(userId);
+            AppUser response = userService.findByUserid(userId);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {
@@ -100,7 +100,7 @@ public class UserController {
     ResponseEntity<Object> getByName(@PathVariable(name = "userLastname", required = true) String userLastname) {
 
         try {
-            List<User> response = userService.findByName(userLastname);
+            List<AppUser> response = userService.findByName(userLastname);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {
@@ -117,7 +117,7 @@ public class UserController {
     ResponseEntity<Object> getAll() {
 
         try {
-            List<User> response = userService.findAll();
+            List<AppUser> response = userService.findAll();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             for (StackTraceElement ste : e.getStackTrace()) {

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ismaillagouilly.backend</groupId>
 	<artifactId>Java-Spring-Boot-Backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Java-Spring-Boot-Backend</name>
 	<description>Spring Boot Java Backend Project</description>
 	<properties>
@@ -29,10 +29,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
